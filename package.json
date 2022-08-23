@@ -1,0 +1,44 @@
+{
+  "name": "endpoint-monitor",
+  "version": "1.0.0",
+  "description": "Monitor for endpoint",
+  "main": "dist/index.js",
+  "scripts": {
+    "ts": "tsc -w",
+    "build": "webpack --mode=production --color --progress",
+    "debug": "webpack --mode=development --color --watch --progress"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lihugang/endpoint-monitor.git"
+  },
+  "keywords": [
+    "endpoint",
+    "monitor",
+    "qps",
+    "ip-banner",
+    "token-banner",
+    "pv",
+    "uv",
+    "dau",
+    "mau"
+  ],
+  "author": "lihugang",
+  "license": "MIT",
+  "types": "./index.d.ts",
+  "bugs": {
+    "url": "https://github.com/lihugang/endpoint-monitor/issues"
+  },
+  "homepage": "https://github.com/lihugang/endpoint-monitor#readme",
+  "devDependencies": {
+    "@types/node": "^18.7.11",
+    "ts-loader": "^9.3.1",
+    "typescript": "^4.7.4",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "json-beautify": "^1.1.1"
+  }
+}

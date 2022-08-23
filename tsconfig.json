@@ -1,0 +1,19 @@
+{
+    "include": ["./src"],
+    "compilerOptions": {
+        "target": "es3",
+        "declarationMap": true,
+        "sourceMap": true,
+        "declaration": true,
+        // "module": "umd",
+        "incremental": false,
+        "checkJs": true,
+        "outDir": "./dist",
+        "removeComments": true,
+        "downlevelIteration": true,
+        "strict": true,
+    },
+    "types": [
+        "node"
+    ]
+}
