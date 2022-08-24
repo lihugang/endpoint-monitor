@@ -1,0 +1,1 @@
+{"version":3,"file":"memory.d.ts","sourceRoot":"","sources":["../../src/getsysinfo/memory.ts"],"names":[],"mappings":"AAEA,QAAA,MAAM,cAAc,QAAO,MAE1B,CAAC;AAEF,QAAA,MAAM,qBAAqB,QAAO,MAGjC,CAAC;AAEF,QAAA,MAAM,aAAa,QAAO,MAEzB,CAAC;AAEF,QAAA,MAAM,oBAAoB,QAAO,MAIhC,CAAC;AAWF,OAAO,EAAE,cAAc,EAAE,qBAAqB,EAAE,aAAa,EAAE,oBAAoB,EAAE,CAAC"}

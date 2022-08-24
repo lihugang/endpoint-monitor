@@ -1,5 +1,9 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import * as os from 'os';
+import * as memoryInfoCollection from './getsysinfo/memory';
+import * as printSysStatus from './printSysStatus';
+import { nativeHTTPHook, setOutputPath as collectionOutputPath_native_hook } from './hooks/nativeHTTPServer';
 import { logger } from './logger';
 
 interface Config {
@@ -8,6 +12,10 @@ interface Config {
         isOutputToFile?: boolean;
         logOutputFile?: string;
     },
+    checkSystemMSec ?: number;
+    collection?: {
+        outputPath ?: string;
+    }
     ban?: {
         ip?: Array<string | RegExp>;
         cookie?: Array<string | RegExp>;
@@ -21,11 +29,12 @@ interface Config {
         },
     },
     warnings?: {
-        cpu?: string | number;
+        cpu?: string;
         usingMemory?: string | number;
         freeMemory?: string | number;
-        websiteQts?: number;
-        endpointQts?: number;
+        websiteQps?: number;
+        endpointQps?: number;
+        outputPath?: string;
     }
 };
 
@@ -56,7 +65,8 @@ const setup = () => {
     if (defaultConfigPath === null) throw new Error('Could not find the configuration file.');
 
     try {
-        globalConfig = require(defaultConfigPath);
+        if (defaultConfigPath.endsWith('.json')) globalConfig = JSON.parse(fs.readFileSync(defaultConfigPath, 'utf8'));
+        else globalConfig = require(defaultConfigPath);
     } catch (e) {
         console.error(e);
         throw new Error('Could not parse the configuration file');
@@ -69,10 +79,36 @@ const setup = () => {
         logger.isOutputToFile = globalConfig.logSystem.isOutputToFile ?? true;
         logger.outputFilename = globalConfig.logSystem.logOutputFile ?? 'logs/[Date].log';
     };
+
+    //set collection config
+    if (globalConfig.collection) {
+        collectionOutputPath_native_hook(globalConfig.collection.outputPath ?? '[Date]-[Hour].collection.log');
+        printSysStatus.setMonitorOutputPath(globalConfig.collection.outputPath ?? '[Date]-[Hour].collection.log');
+    };
+
+    //set monitor config
+    if (globalConfig.checkSystemMSec) {
+        printSysStatus.setMSecond(globalConfig.checkSystemMSec);
+    };
+
+    if (globalConfig.warnings) {
+        printSysStatus.setWarnings(globalConfig.warnings);
+        if (globalConfig.warnings.outputPath) printSysStatus.setWarningOutputPath(globalConfig.warnings.outputPath);
+    };
+
+    //collection info
+    const infoCollectionLogger = new logger('[Endpoint Monitor] Collection System Info');
+    infoCollectionLogger.info('Operation System', os.type(), os.platform(), os.release());
+    infoCollectionLogger.info('Computer up time', os.uptime(), 's');
+    infoCollectionLogger.info('CPU info', 'Endianness=' + os.endianness(), 'Arch=' + os.arch());
+    infoCollectionLogger.info('Total memory', (os.totalmem() / 1024 / 1024 / 1024).toFixed(2) + 'GB', 'Free memory', (os.freemem() / 1024 / 1024 / 1024).toFixed(2) + 'GB');
+    infoCollectionLogger.info('Memory remain', (memoryInfoCollection.getFreeMemoryPercent() * 100).toFixed(2) + '%');
+    infoCollectionLogger.info('Endpoint monitor version', require('../package.json').version);
 };
 
 setup();
 
-export { 
+export {
     logger,
+    nativeHTTPHook as http,
 };

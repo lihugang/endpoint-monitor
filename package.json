@@ -2,7 +2,7 @@
   "name": "endpoint-monitor",
   "version": "1.0.0",
   "description": "Monitor for endpoint",
-  "main": "dist/index.js",
+  "main": "dist/pack.js",
   "scripts": {
     "ts": "tsc -w",
     "build": "webpack --mode=production --color --progress",
@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "chalk": "^4.1.2",
+    "cookie-parser": "^1.4.6",
     "json-beautify": "^1.1.1"
   }
 }

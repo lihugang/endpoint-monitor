@@ -4,9 +4,9 @@ const getCpuUsagePercent = (waitTime: number = 100, callback?: Function): Promis
         setTimeout(() => {
             const endCpuUsage: NodeJS.CpuUsage = process.cpuUsage();
             const usingCpuUSeconds: number = addObjectAllValues(endCpuUsage) - addObjectAllValues(startCpuUsage);
-            const usingCPUPercentage: number = usingCpuUSeconds / (waitTime * 100);
+            const usingCPUPercentage: number = usingCpuUSeconds / (waitTime * 1000);
             if (callback && callback instanceof Function) callback(usingCPUPercentage);
-            return usingCPUPercentage;
+            return resolve(usingCPUPercentage);
         }, waitTime);
     });
 };

@@ -89,14 +89,16 @@ class logger {
     };
 
     private printToFile(level: number, message: any[]): void {
-        message.forEach(val => {
+        for (let i = 0, len = message.length; i < len; ++i) {
+            let val: any = message[i];
             if (val instanceof Error) val = val.message + '\n' + val.stack;
             else if (val instanceof Function) val = '[Function ' + val.name + ']';
             else if (typeof val === 'object') val = JSON.stringify(val);
             else val = val.toString();
-        });
+            message[i] = val;
+        };
 
-        const outputFilename = this.outputFilename.replace('[Date]', new Date().toDateString().split(' ').slice(1).join('-'));
+        const outputFilename = this.outputFilename.replace('[Date]', new Date().toDateString().split(' ').slice(1).join('-')).replace('[Hour]', new Date().getHours().toString() + 'h').replace('[Minute]', new Date().getMinutes().toString() + 'm');
         if (this.openFd && this.openFd !== -1) {
             if (this.openFilename !== outputFilename) {
                 //new date
