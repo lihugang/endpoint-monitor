@@ -154,36 +154,36 @@ var printSysInfo = function () { return __awaiter(void 0, void 0, void 0, functi
                         ;
                     }
                     ;
-                    if (isSave) {
-                        monitorCollectionLogger.isOutputToFile = true;
-                        if (!isWarning) {
-                            isSave = false;
-                            setTimeout(function () { return isSave = true; }, print_per_ms * 8);
-                        }
-                        ;
-                    }
-                    else
-                        monitorCollectionLogger.isOutputToFile = false;
-                    if (!isWarning)
-                        monitorCollectionLogger.info('systemInfo', {
-                            cpuUsagePercent: cpuUsagePercent,
-                            memoryUsagePercent: memoryUsagePercent,
-                            freeMemoryPercent: freeMemoryPercent,
-                            memoryUsage: memoryUsage,
-                            freeMemory: freeMemory,
-                            delay: print_per_ms
-                        });
-                    else
-                        monitorCollectionLogger.warn('systemInfo', {
-                            cpuUsagePercent: cpuUsagePercent,
-                            memoryUsagePercent: memoryUsagePercent,
-                            freeMemoryPercent: freeMemoryPercent,
-                            memoryUsage: memoryUsage,
-                            freeMemory: freeMemory,
-                            delay: print_per_ms
-                        });
                 }
                 ;
+                if (isSave) {
+                    monitorCollectionLogger.isOutputToFile = true;
+                    if (!isWarning) {
+                        isSave = false;
+                        setTimeout(function () { return isSave = true; }, print_per_ms * 8);
+                    }
+                    ;
+                }
+                else
+                    monitorCollectionLogger.isOutputToFile = false;
+                if (!isWarning)
+                    monitorCollectionLogger.info('systemInfo', {
+                        cpuUsagePercent: cpuUsagePercent,
+                        memoryUsagePercent: memoryUsagePercent,
+                        freeMemoryPercent: freeMemoryPercent,
+                        memoryUsage: memoryUsage,
+                        freeMemory: freeMemory,
+                        delay: print_per_ms
+                    });
+                else
+                    monitorCollectionLogger.warn('systemInfo', {
+                        cpuUsagePercent: cpuUsagePercent,
+                        memoryUsagePercent: memoryUsagePercent,
+                        freeMemoryPercent: freeMemoryPercent,
+                        memoryUsage: memoryUsage,
+                        freeMemory: freeMemory,
+                        delay: print_per_ms
+                    });
                 return [2];
         }
     });

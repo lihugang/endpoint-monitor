@@ -126,25 +126,21 @@ const printSysInfo = async () => {
             };
         };
 
-        if (isSave) {
-            monitorCollectionLogger.isOutputToFile = true;
-            if (!isWarning) {
-                isSave = false;
-                setTimeout(() => isSave = true, print_per_ms * 8); //8 clocks
-            };
+    };
 
-        } else monitorCollectionLogger.isOutputToFile = false;
+    if (isSave) {
+        monitorCollectionLogger.isOutputToFile = true;
+        if (!isWarning) {
+            isSave = false;
+            setTimeout(() => isSave = true, print_per_ms * 8); //8 clocks
+        };
 
-        if (!isWarning)
-            monitorCollectionLogger.info('systemInfo', {
-                cpuUsagePercent,
-                memoryUsagePercent,
-                freeMemoryPercent,
-                memoryUsage,
-                freeMemory,
-                delay: print_per_ms
-            });
-        else monitorCollectionLogger.warn('systemInfo', {
+    } else monitorCollectionLogger.isOutputToFile = false;
+
+
+
+    if (!isWarning)
+        monitorCollectionLogger.info('systemInfo', {
             cpuUsagePercent,
             memoryUsagePercent,
             freeMemoryPercent,
@@ -152,7 +148,14 @@ const printSysInfo = async () => {
             freeMemory,
             delay: print_per_ms
         });
-    };
+    else monitorCollectionLogger.warn('systemInfo', {
+        cpuUsagePercent,
+        memoryUsagePercent,
+        freeMemoryPercent,
+        memoryUsage,
+        freeMemory,
+        delay: print_per_ms
+    });
 };
 printSysInfo();
 
