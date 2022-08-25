@@ -13,7 +13,7 @@ Dependencies: 依赖：
 - - -
 How to install: 如何安装  
 - `mkdir server && cd server`
-- `npm i endpoint-monitor@1.0.0 --save`
+- `npm i endpoint-monitor --save`
 - Configure `monitor.config.json` 配置`monitor.config.json`
 
 There is a format of the configuration: 这里有一份配置的格式
@@ -80,7 +80,8 @@ You can use `const http = monitor.http` instead of `const http = require('http')
 API is all the same. 应用程序接口是全部一样的。  
 
 It only supports native http server so far. 目前仅支持的原生http服务器的支持  
-It will add supports for `express` in the near future. 将来会增加对`express`框架的支持  
+~~It will add supports for `express` in the near future. 将来会增加对`express`框架的支持~~  
+Support for express: [Endpoint-Monitor-Express](https://www.npmjs.org/endpoint-monitor-express)
 - - -
 ### Change Log
 ### 更改日志
@@ -88,3 +89,5 @@ It will add supports for `express` in the near future. 将来会增加对`expres
 - @1.0.0 -> @1.0.1 增加了对不设置警告不打印系统信息的补丁
 - @1.0.1 -> @1.0.2 expose interface for config
 - @1.0.1 -> @1.0.2 暴露获得配置文件的api
+- @1.0.2 -> @1.0.3 add support for express
+- @1.0.2 -> @1.0.3 增加了对express框架的支持
