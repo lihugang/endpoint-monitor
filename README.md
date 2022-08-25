@@ -1,7 +1,7 @@
 # Endpoint Monitor
 # 端点监控
-### Version: 1.0.0
-### 版本：1.0.0
+### Version: 1.0.1
+### 版本：1.0.1
 ### License: MIT License
 ### 协议：MIT
 - - -
@@ -81,3 +81,8 @@ API is all the same. 应用程序接口是全部一样的。
 
 It only supports native http server so far. 目前仅支持的原生http服务器的支持  
 It will add supports for `express` in the near future. 将来会增加对`express`框架的支持  
+- - -
+### Change Log
+### 更改日志
+- @1.0.0 -> @1.0.1 add patch for if no set warnings, no print sysinfo
+- @1.0.0 -> @1.0.1 增加了对不设置警告不打印系统信息的补丁
