@@ -1,6 +1,6 @@
 {
   "name": "endpoint-monitor",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Monitor for endpoint",
   "main": "dist/pack.js",
   "scripts": {

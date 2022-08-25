@@ -1,6 +1,6 @@
 "use strict";
 exports.__esModule = true;
-exports.http = exports.logger = void 0;
+exports.getConfig = exports.http = exports.logger = void 0;
 var fs = require("fs");
 var path = require("path");
 var os = require("os");
@@ -80,5 +80,9 @@ var setup = function () {
     infoCollectionLogger.info('Memory remain', (memoryInfoCollection.getFreeMemoryPercent() * 100).toFixed(2) + '%');
     infoCollectionLogger.info('Endpoint monitor version', require('../package.json').version);
 };
+var getConfig = function () {
+    return globalConfig;
+};
+exports.getConfig = getConfig;
 setup();
 //# sourceMappingURL=index.js.map

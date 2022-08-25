@@ -1,7 +1,7 @@
 # Endpoint Monitor
 # 端点监控
-### Version: 1.0.1
-### 版本：1.0.1
+### Version: 1.0.2
+### 版本：1.0.2
 ### License: MIT License
 ### 协议：MIT
 - - -
@@ -86,3 +86,5 @@ It will add supports for `express` in the near future. 将来会增加对`expres
 ### 更改日志
 - @1.0.0 -> @1.0.1 add patch for if no set warnings, no print sysinfo
 - @1.0.0 -> @1.0.1 增加了对不设置警告不打印系统信息的补丁
+- @1.0.1 -> @1.0.2 expose interface for config
+- @1.0.1 -> @1.0.2 暴露获得配置文件的api
