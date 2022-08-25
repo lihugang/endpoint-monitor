@@ -106,9 +106,14 @@ const setup = () => {
     infoCollectionLogger.info('Endpoint monitor version', require('../package.json').version);
 };
 
+const getConfig = () => {
+    return globalConfig;
+};
+
 setup();
 
 export {
     logger,
     nativeHTTPHook as http,
+    getConfig,
 };
